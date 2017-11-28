@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SimpleAndroidCalculator</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="hello_world">Ciao Mondo!</string>
+    <string name="hello">Android Simple Calculator</string>
+    <string name="hint1">Inserisci valore uno...</string>
+    <string name="hint2">Inserisci valore due...</string>
+    <string name="resultLabel">Risultato: </string>
+    <string name="add">Aggiungi valori</string>
+    <string name="multiply">Moltiplica Valori</string>
+    <string name="instructions">Istruzioni</string>
+    <string name="instructions_lorem">Scritte incomprensibili in latino dal dubbio utilizzo</string>
+    <string name="back">Indietro</string>
+
+</resources>
