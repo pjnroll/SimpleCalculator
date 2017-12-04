@@ -22,6 +22,26 @@ public class MainActivity extends Activity {
         final EditText value2 = (EditText) findViewById(R.id.value2);
         final TextView result = (TextView) findViewById(R.id.result);
         Button addButton = (Button) findViewById(R.id.addValues);
+        Button multiplyButton = (Button) findViewById(R.id.multiplyValues);
+
+        View.OnClickListener listener = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case (R.id.addValues):
+                        break;
+
+                    case (R.id.multiplyValues):
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        };
+
+        addButton.setOnClickListener(listener);
+        multiplyButton.setOnClickListener(listener);
         addButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 try {
@@ -38,7 +58,6 @@ public class MainActivity extends Activity {
                 }
             }
         });
-        Button multiplyButton = (Button) findViewById(R.id.multiplyValues);
         multiplyButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 try {
