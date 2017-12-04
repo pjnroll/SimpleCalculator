@@ -18,20 +18,23 @@ public class MainActivity extends Activity {
         final String LOG_TAG = "MainScreen";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final EditText value1 = (EditText) findViewById(R.id.value1);
-        final EditText value2 = (EditText) findViewById(R.id.value2);
-        final TextView result = (TextView) findViewById(R.id.result);
-        Button addButton = (Button) findViewById(R.id.addValues);
-        Button multiplyButton = (Button) findViewById(R.id.multiplyValues);
+        final EditText value1 = findViewById(this, R.id.value1);
+        final EditText value2 = findViewById(this, R.id.value2);
+        final TextView result = findViewById(this, R.id.result);
+
+        Button addButton = findViewById(this, R.id.addValues);
+        Button multiplyButton = findViewById(this, R.id.multiplyValues);
 
         View.OnClickListener listener = new OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case (R.id.addValues):
+                        // call addValues(int, int)
                         break;
 
                     case (R.id.multiplyValues):
+                        // call multiplyValues(int, int)
                         break;
 
                     default:
@@ -42,37 +45,22 @@ public class MainActivity extends Activity {
 
         addButton.setOnClickListener(listener);
         multiplyButton.setOnClickListener(listener);
-        addButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                try {
-                    int val1 = Integer.parseInt(value1.getText().toString());
-                    int val2 = Integer.parseInt(value2.getText().toString());
-                    val2 = val2 < 0 ? -val2 : val2;
-                    Integer answer = val1 + val2;
-                    result.setText(answer.toString());
-                } catch (Exception e) {
-                    Log.e(LOG_TAG, "Failed to add numbers", e);
-                    Intent instr = new Intent(v.getContext(), InstructionsActivity.
-                            class);
-                    startActivity(instr);
-                }
-            }
-        });
-        multiplyButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                try {
-                    int val1 = Integer.parseInt(value1.getText().toString());
-                    int val2 = Integer.parseInt(value2.getText().toString());
-                    Integer answer = val1 * val2;
-                    result.setText(answer.toString());
-                } catch (Exception e) {
-                    Log.e(LOG_TAG, "Failed to multiply numbers", e);
-                    Intent instr = new Intent(v.getContext(), InstructionsActivity.
-                            class);
-                    startActivity(instr);
-                }
-            }
-        });
     }
+
+    /**
+     * this method let to avoid casting every time the Views to their specific sub-classes;
+     * @param act
+     * @param viewId
+     * @param <T>
+     * @return
+     */
+    public static <T extends View> T findViewById(Activity act, int viewId) {
+        // We get the VuewGroup of the Activity
+        View containerView = act.getWindow().getDecorView();
+        View toRet = containerView.findViewById(viewId);
+        return (T) toRet;
+    }
+
+
 }
 
