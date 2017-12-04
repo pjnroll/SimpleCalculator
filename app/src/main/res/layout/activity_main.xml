@@ -59,21 +59,39 @@
         android:id="@+id/LinearLayout03"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
+
         <Button
             android:id="@+id/addValues"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="60dp"
-            android:text="@string/add"
-            android:textSize="20dp" >
-        </Button>
+            android:text="+"
+            android:textSize="20dp"></Button>
+
         <Button
-            android:id="@+id/multiplyValues"
+            android:id="@+id/subtractValues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="60dp"
+            android:text="-"
+            android:textSize="20dp"></Button>
+
+        <Button
+            android:id="@+id/multiplyValues2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="60dp"
+            android:text="@string/multiply"
+            android:textSize="20dp"></Button>
+
+        <Button
+            android:id="@+id/divideValues"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="60dp"
-            android:text="@string/multiply"
-            android:textSize="20dp" >
-        </Button>
+            android:text="/"
+            android:textSize="20dp"></Button>
     </LinearLayout>
 </LinearLayout>

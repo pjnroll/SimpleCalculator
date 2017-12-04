@@ -10,31 +10,61 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import static android.content.ContentValues.TAG;
+
 
 public class MainActivity extends Activity {
+    final static String LOG_TAG = "MainScreen";
+
+    private EditText mTxtValue1;
+    private EditText mTxtValue2;
+
+    private Button mBtnAdd;
+    private Button mBtnSubtract;
+    private Button mBtnMultiply;
+    private Button mBtnDivide;
+
+
+    private TextView mTxtResult;
+
+    private float mValue1;
+    private float mValue2;
+    private float mResult;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        final String LOG_TAG = "MainScreen";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final EditText value1 = findViewById(this, R.id.value1);
-        final EditText value2 = findViewById(this, R.id.value2);
-        final TextView result = findViewById(this, R.id.result);
 
-        Button addButton = findViewById(this, R.id.addValues);
-        Button multiplyButton = findViewById(this, R.id.multiplyValues);
+        mTxtValue1 = findViewById(this, R.id.value1);
+        mTxtValue2 = findViewById(this, R.id.value2);
+        mTxtResult = findViewById(this, R.id.result);
+
+        mBtnAdd = findViewById(this, R.id.addValues);
+        mBtnSubtract = findViewById(this, R.id.addValues);
+        mBtnMultiply = findViewById(this, R.id.multiplyValues);
+        mBtnDivide = findViewById(this, R.id.multiplyValues);
 
         View.OnClickListener listener = new OnClickListener() {
             @Override
             public void onClick(View v) {
+                float result = 0f;
                 switch (v.getId()) {
                     case (R.id.addValues):
-                        // call addValues(int, int)
+                        result = addValues();
                         break;
 
                     case (R.id.multiplyValues):
-                        // call multiplyValues(int, int)
+                        result = multiplyValues();
+                        break;
+
+                    case (R.id.subtractValues):
+                        result = subtractValues();
+                        break;
+
+                    case (R.id.divideValues):
+                        result = divideValues();
                         break;
 
                     default:
@@ -43,8 +73,62 @@ public class MainActivity extends Activity {
             }
         };
 
-        addButton.setOnClickListener(listener);
-        multiplyButton.setOnClickListener(listener);
+        mBtnAdd.setOnClickListener(listener);
+        mBtnSubtract.setOnClickListener(listener);
+        mBtnMultiply.setOnClickListener(listener);
+        mBtnDivide.setOnClickListener(listener);
+    }
+
+    private float addValues () {
+        float toRet = -1;
+        try {
+            mValue1 = Float.valueOf(mTxtValue1.getText().toString());
+            mValue2 = Float.valueOf(mTxtValue2.getText().toString());
+
+            toRet = mValue1 + mValue2;
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Empty values");
+        }
+        return toRet;
+    }
+
+    private float multiplyValues () {
+        float toRet = -1;
+        try {
+            mValue1 = Float.valueOf(mTxtValue1.getText().toString());
+            mValue2 = Float.valueOf(mTxtValue2.getText().toString());
+
+            toRet = mValue1 * mValue2;
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Empty values");
+        }
+        return toRet;
+    }
+
+    private float subtractValues () {
+        float toRet = -1;
+        try {
+            mValue1 = Float.valueOf(mTxtValue1.getText().toString());
+            mValue2 = Float.valueOf(mTxtValue2.getText().toString());
+
+            toRet = mValue1 - mValue2;
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Empty values");
+        }
+        return toRet;
+    }
+
+    private float divideValues () {
+        float toRet = -1;
+        try {
+            mValue1 = Float.valueOf(mTxtValue1.getText().toString());
+            mValue2 = Float.valueOf(mTxtValue2.getText().toString());
+
+            toRet = mValue1 / mValue2;
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Empty values");
+        }
+        return toRet;
     }
 
     /**
@@ -60,7 +144,4 @@ public class MainActivity extends Activity {
         View toRet = containerView.findViewById(viewId);
         return (T) toRet;
     }
-
-
 }
-

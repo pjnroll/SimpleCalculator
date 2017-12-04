@@ -6,10 +6,11 @@
     <string name="hint1">Enter value</string>
     <string name="hint2">Enter value two</string>
     <string name="resultLabel">Result:</string>
-    <string name="add">Add values</string>
-    <string name="multiply">Multiply values</string>
+    <string name="add">+</string>
+    <string name="subtract">-</string>
+    <string name="multiply">x</string>
+    <string name="divide">/</string>
     <string name="instructions">Instructions</string>
-    114
     <string name="instructions_lorem">Lorem ipsum dolor sit amet,
 consectetur adipiscing elit. Ut euismod, nibh sed commodo varius
 , ligula odio pulvinar nisl, sit amet bibendum magna tellus in
